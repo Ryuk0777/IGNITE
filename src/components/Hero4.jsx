@@ -1,10 +1,14 @@
 import React, { useRef, useEffect } from 'react'
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useSelector } from 'react-redux';
 
 const Hero4 = ({hero4Ref}) => {
 
     const upperdiv1 = useRef();
     const upperdiv2 = useRef();
+
+    const divRef = useRef();
 
     const lowerdiv1 = useRef();
     const lowerdiv2 = useRef();
@@ -67,17 +71,39 @@ const Hero4 = ({hero4Ref}) => {
         animationRef2.current = requestAnimationFrame(lowerAnimation);
       })
 
+
+
+    
+      const hero4 = useSelector(state => state.animation.hero4);
+    
+      useGSAP(()=>{
+          if(hero4){
+          const t1 = gsap.timeline()
+          t1.to([upperdiv1.current, upperdiv2.current, lowerdiv1.current, lowerdiv2.current, divRef.current],{
+              opacity:1,
+              ease:"power2.out",
+            })
+          }
+          else if(!hero4){
+          const t2 = gsap.timeline()
+          t2.to([upperdiv1.current, upperdiv2.current, lowerdiv1.current, lowerdiv2.current, divRef.current],{
+              opacity:0,
+              ease:"power2.out",
+            })
+          }
+        },[hero4])
+
   return (
     <div ref={hero4Ref} className="panel h-full w-screen flex flex-col justify-end items-center">
-        <div className='absolute w-[5vw] h-auto right-0 top-0 z-20 font-bold text-[min(10vw,100px)] text-white font-stroke-black-sm'><h1>4</h1></div>
+        <div className='absolute w-[7vw] h-auto left-0 top-0 z-20 font-bold text-[min(10vw,100px)] text-white font-stroke-black-sm flex justify-center items-center'><h1>4</h1></div>
         <div className='h-[20vh] w-full flex text-[min(4vw,50px)] font-bold overflow-x-hidden text-white font-stroke-black-sm'>
-            <div ref={upperdiv1} className='h-full w-full flex justify-between items-center px-3 lg:px-18 shrink-0'>
+            <div ref={upperdiv1} className='h-full w-full flex justify-between items-center px-3 lg:px-18 shrink-0 opacity-0'>
                 <h1 className='text-transparent'>CUSTOMIZATION</h1>
                 <h1>CUSTOMIZATION</h1>
                 <h1 className='text-transparent'>CUSTOMIZATION</h1>
                 <h1>CUSTOMIZATION</h1>
             </div>
-            <div ref={upperdiv2} className='h-full w-full flex justify-between items-center px-3 lg:px-18 shrink-0'>
+            <div ref={upperdiv2} className='h-full w-full flex justify-between items-center px-3 lg:px-18 shrink-0 opacity-0'>
                 <h1 className='text-transparent'>CUSTOMIZATION</h1>
                 <h1>CUSTOMIZATION</h1>
                 <h1 className='text-transparent'>CUSTOMIZATION</h1>
@@ -86,7 +112,7 @@ const Hero4 = ({hero4Ref}) => {
         </div>
 
 
-        <div className='h-[39vh] w-full bg-green-00 flex justify-between text-[min(10vw,100px)] font-bold'>
+        <div ref={divRef} className='h-[39vh] w-full bg-green-00 flex justify-between text-[min(10vw,100px)] font-bold opacity-0'>
             <div className='bg-emerald-30 h-full w-[36.5vw] flex justify-center items-center px-5 text-teal-300 font-stroke-black-lg'>
                 <h1>It's The Part</h1>
             </div>

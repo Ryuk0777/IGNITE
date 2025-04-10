@@ -65,7 +65,7 @@ function Hero1({containerAnimation, hero1Ref}) {
 
   return (
     <div ref={hero1Ref} className="panel h-[107vh] lg:h-[100vh] w-[100vw] shrink-0 flex items-center overflow-x-hidden" >
-        <div className='absolute w-[5vw] h-auto right-0 top-0 z-20 font-bold text-[min(10vw,100px)] text-white font-stroke-black-sm'><h1>1</h1></div>
+        <div className='absolute w-[7vw] h-auto left-0 top-0 z-20 font-bold text-[min(10vw,100px)] text-white font-stroke-black-sm flex justify-center items-center'><h1>1</h1></div>
         <div ref={div1Ref} className='h-[25vh] w-full bg-green-40 flex justify-center items-center shrink-0 p-0 opacity-0'>
           <h1 className='text-[min(10vw,150px)] font-bold lg:whitespace-nowrap text-rose-600 font-stroke-black-md'>Ignite Your Passion for JDM</h1>
         </div>

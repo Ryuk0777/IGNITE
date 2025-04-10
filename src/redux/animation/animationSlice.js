@@ -5,24 +5,37 @@ export const animationSlice = createSlice({
   initialState: {
     ismodelLoaded: false,
     welcomeAnimationState: false,
-    hero1:false,
-    hero2:false,
-    hero3:false,
-    hero4:false,
-    hero5:false,
+    rotation: 4.8,
+    hero2: false,
+    hero3: false,
+    hero4: false,
+    hero5: false,
   },
   reducers: {
     setModelLoaded: (state, actions) => {
-      state.ismodelLoaded = actions.payload
+      state.ismodelLoaded = actions.payload;
     },
     setWelcomaeAnimationState: (state, actions) => {
-        state.welcomeAnimationState = actions.payload
+      state.welcomeAnimationState = actions.payload;
     },
-    setHeros1State: (state, actions) => {
-      state.hero1 = actions.payload
+    setRotation: (state, actions) => {
+      state.rotation = actions.payload;
+    },
+
+    setHerosState: (state, { payload }) => {
+      const { name, value } = payload;
+      if (state.hasOwnProperty(name)) {
+        state[name] = value;
+      }
     }
   },
 });
 
-export const { setModelLoaded, setWelcomaeAnimationState, setHeros1State } = animationSlice.actions;
+export const {
+  setModelLoaded,
+  setWelcomaeAnimationState,
+  setRotation,
+  setHerosState,
+} = animationSlice.actions;
+
 export default animationSlice.reducer;

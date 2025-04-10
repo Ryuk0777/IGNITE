@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import gsap from 'gsap';
 
 
-const CautionTape = ({className, title, extraClass}) => {
+const CautionTape = ({className, title, extraClass, direction}) => {
 
     const div1Ref = useRef();
     const div2Ref = useRef();
@@ -10,7 +10,6 @@ const CautionTape = ({className, title, extraClass}) => {
     const animationRef = useRef(); 
 
     let xPercent = 0;
-    let direction = -1;
     let lastTime = 0;
 
     const desktopAnimation = (currentTime) => {
@@ -23,6 +22,9 @@ const CautionTape = ({className, title, extraClass}) => {
     
         if (xPercent <= -100) {
           xPercent = 0;
+        }
+        else if (xPercent > 0) {
+          xPercent = -100;
         }
         gsap.set(div1Ref.current, { xPercent: xPercent });
         gsap.set(div2Ref.current, { xPercent: xPercent });
@@ -39,7 +41,7 @@ const CautionTape = ({className, title, extraClass}) => {
 
 
   return (
-    <div className={`bg-amber-300 h-[5vh] lg:h-[7vh] w-[200vw] lg:w-screen absolute ${className} flex`}>
+    <div className={`bg-amber-300 h-[5vh] lg:h-[7vh] lg:w-screen  ${className} flex`}>
         <div ref={div1Ref} className={`h-full w-full bg-red-30 shrink-0 flex justify-between items-center gap-x-5 ${extraClass}`}>
             <h1 className='text-[min(5vw,35px)] font-bold'>{title}</h1>
             <h1 className='text-[min(5vw,35px)] font-bold'>{title}</h1>

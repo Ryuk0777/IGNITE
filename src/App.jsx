@@ -7,6 +7,8 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Lenis from 'lenis'
+import Section1 from "./components/Section1";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +19,8 @@ function App() {
     const hero3Ref = useRef();
     const hero4Ref = useRef();
     const hero5Ref = useRef();
+
+    const navbarRef = useRef();
 
     const [containerAnimation, setContainerAnimation] = useState();
 
@@ -38,7 +42,7 @@ function App() {
   return (
     <>
       <Welcome />
-      <Navbar />
+      <Navbar navbarRef={navbarRef} />
       <Model 
       className="h-screen w-screen fixed top-0 left-0" 
       containerAnimation={containerAnimation}
@@ -57,7 +61,9 @@ function App() {
         hero4Ref={hero4Ref}
         hero5Ref={hero5Ref}
         />
-        <div className="h-screen bg-white"></div>
+        
+        <Section1 navbarRef={navbarRef}/>
+
       </div>
     </>
   );
