@@ -7,7 +7,6 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Lenis from 'lenis'
-import CautionTape from "./components/CautionTape";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,9 +57,7 @@ function App() {
         hero4Ref={hero4Ref}
         hero5Ref={hero5Ref}
         />
-        <div className="h-screen bg-white">
-          <CautionTape title="Caution"/>
-        </div>
+        <div className="h-screen bg-white"></div>
       </div>
     </>
   );
