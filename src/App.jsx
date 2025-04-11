@@ -8,6 +8,12 @@ import Navbar from "./components/Navbar";
 import Welcome from "./components/Welcome";
 import Lenis from 'lenis'
 import Section1 from "./components/Section1";
+import Skyline from "./components/Skyline";
+import Supra from "./components/Supra";
+import MazdaRX7 from "./components/MazdaRX7";
+import Cursor from "./components/Cursor";
+import Miata from "./components/Miata";
+import Footer from "./components/Footer";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -21,6 +27,8 @@ function App() {
     const hero5Ref = useRef();
 
     const navbarRef = useRef();
+
+    const cursorRef = useRef();
 
     const [containerAnimation, setContainerAnimation] = useState();
 
@@ -37,14 +45,17 @@ function App() {
     
 
   },[])
+
+  
  
 
   return (
-    <>
+    <div className="cursor-none">
+      <Cursor cursorRef={cursorRef} />
       <Welcome />
       <Navbar navbarRef={navbarRef} />
       <Model 
-      className="h-screen w-screen fixed top-0 left-0" 
+      className="h-screen w-screen fixed top-0 left-0 cursor-none" 
       containerAnimation={containerAnimation}
       hero1Ref={hero1Ref}
       hero2Ref={hero2Ref}
@@ -52,7 +63,7 @@ function App() {
       hero4Ref={hero4Ref}
       hero5Ref={hero5Ref}
       />
-      <div className="h-auto w-full absolute top-0 left-0 font-karantina">
+      <div className="h-auto w-full absolute top-0 left-0 font-karantina cursor-none">
         <Hero 
         setContainerAnimation={setContainerAnimation}
         hero1Ref={hero1Ref}
@@ -64,8 +75,14 @@ function App() {
         
         <Section1 navbarRef={navbarRef}/>
 
+        <MazdaRX7 cursorRef={cursorRef} />
+        <Miata cursorRef={cursorRef}/>
+        <Skyline cursorRef={cursorRef}/>
+        <Supra cursorRef={cursorRef}/>
+        <Footer cursorRef={cursorRef}/>
+
       </div>
-    </>
+    </div>
   );
 }
 

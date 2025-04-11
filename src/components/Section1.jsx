@@ -23,7 +23,7 @@ const Section1 = ({navbarRef}) => {
                 start: "top bottom",
                 end: "top top",
                 scrub: 1,
-                markers:true,
+                markers:false,
                 snap: 1,
             }
         })
@@ -31,7 +31,7 @@ const Section1 = ({navbarRef}) => {
     },[navbarRef])
 
   return (
-    <div ref={divRef} className="h-screen bg-white overflow-hidden flex flex-col justify-center items-center gap-y-5">
+    <div ref={divRef} className="h-screen bg-white overflow-hidden flex flex-col justify-center items-center gap-y-5 cursor-none">
     <CautionTape className="" extraClass="lg:px-20" title="Caution" direction={-1}/>
     <div className='w-auto h-auto flex text-[min(25vw,170px)] font-bold z-10 gap-x-8'>
     <h1>Explore</h1>
